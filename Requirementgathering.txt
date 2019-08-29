@@ -1,0 +1,100 @@
+SDLC - software development life cyle 
+
+1. Requirement gathering - BA --> Document --> Assignment document   - done 
+2. Req eclitation -> Ba to Team (Walk through)   - TBD  
+3. Design -> What ?How are we going to do this?  -> LLD, HHD( No of actions) - paper- derieve 
+4. Coding -> Using any language - Java
+5. Unit testing - > 
+
+Not necessary for u 
+6. BA --> QA testing Certtify -
+7. UAT - 
+8. SIT 
+9. Production
+-----------------------------
+
+Hotel management system - city lodge
+
+Actions : Renting and maintain
+Entities : Rooms (Standard & suit) 
+Hint * uniquely generated random number for roomid ,record id, customer id 
+Rooms --
+1.Room id --> R_(Std) , S_(Suit)
+2.No of bed --> Std (1,2,4) , Suit(6) --> bedidThis requires a java validation (not req)
+3. Desc --> validation (20 words)
+4. Room type --> Std , Suite ( Room type id) R, S
+5. Room status -->(Available, Rented and Maintenance)
+6. maintanence date
+7. maintanence status (( 0-->undermaintanence
+1-> Room service done)) 
+
+Room type 
+1. Room Type id ( R ,S )  
+2. Room Type name ( Std, Suit)
+3. bed id
+4. Late fees (Calculate based on bed id) if 1-->59*135%
+
+(R, Std, 5$, 7$,)
+(S, suite, 10$, 15$)
+Room fees calc ( R _ 5$ --> 4 days --> 20 )
+Late fees (R _ 7$ --> 1 day- 7)
+Total = 27
+
+bed
+1.bed id - One,two, four, six
+2.quantity - 1,2,4,6
+3.fees- 59,99,199,999
+
+
+
+
+Customer 
+1. Customer id - (output)
+2customer name - (input)
+3. number of days (input)
+4. record id  - (Update the hiring record)
+5. Actual start date  (input)
+6. Actual Start time (input)
+7. Actual end time (after his stay)
+8. Actual end date (after his stay) --hiring record 
+9. Room Type - R, S
+
+Hiring Record 
+1. Record id -(roomId_ + customerId_ + rentDate )  - generate in java
+2. rent date  - date time lib given ( fetch this from customer entity) ( the date when a customer rents the room)
+3. Estimated return date - calculate based on (no of days from customer entity)
+4. Actual return date - ( from customer entity)
+5. room id 
+6. Hiring status 
+7. Hiring count --> update when changing the status
+
+
+Problem: Room has room type; room type has bed 
+Room -> bed
+
+
+Action workflow
+1. getRoomStatus(String Roomtypeid) 
+2. Create customer() -->create hiring record ()
+
+Implementation :
+Hiring record  
+toString() - override
+getDetails()
+
+Room Implementation  - RooomActionImplementation
+rent
+returnroom
+addroom 
+performMaintenance 
+completeMaintenance  
+toString
+getDetails  - display 
+
+CityLodge  - Main class
+GetUserDetails -> Menu inputs
+
+room - roomid, type ,S  -- > Stdrooms - 5 
+room - roomid, type ,R  -- > suitrooms - 5 
+
+
