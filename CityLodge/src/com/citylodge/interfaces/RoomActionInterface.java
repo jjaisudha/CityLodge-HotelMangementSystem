@@ -6,7 +6,7 @@ import com.citylodge.beans.Room;
 
 public interface RoomActionInterface {
 
-	void addRoom(List<Room> allRooms);
+	boolean addRoom(List<Room> allRooms);
 	void rentRoom();
 	void returnRoom();
 	void displayRoom();

@@ -40,26 +40,24 @@ public class CityLodgeMain {
 			Scanner scanner = new Scanner(System.in);
 			select = scanner.nextInt();
 			roomAction = new RoomActionImplementation();
-			
-			
 
 			switch (select) {
 			case 1:
-				roomAction.addRoom(allRoomsList);
-				break;
+				if(!roomAction.addRoom(allRoomsList))
+					break;
 			case 7: {
-				System.out.println("You have selectedd option to exit.Do u wish to exit? Say Y/N");
+				System.out.println("You have selected option to exit.Do u wish to exit? Say Y/N");
 				String input = scanner.next();
 				if (input.equalsIgnoreCase("Y"))
 					System.exit(0);
-				else if(input.equalsIgnoreCase("N"))
+				else if (input.equalsIgnoreCase("N"))
 					break;
 			}
 
 			}
 
-		} while (select <=7);
-		
+		} while (select <= 7);
+
 	}
 
 }

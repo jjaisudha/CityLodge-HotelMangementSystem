@@ -10,42 +10,62 @@ import com.citylodge.beans.Room;
 import com.citylodge.interfaces.RoomActionInterface;
 
 public class RoomActionImplementation implements RoomActionInterface {
-	
+
 	Validators validate = new Validators();
 
 	@Override
-	public void addRoom(List<Room> allRoomsList) {
-		Room room= new Room();
+	public boolean addRoom(List<Room> allRoomsList) {
+		Room room = new Room();
 		String input;
-		List<String> roomlist = allRoomsList.stream().map(r->r.getRoomId()).collect(Collectors.toList());
-		System.out.println("BeforeL::"+roomlist);    
-		//To do - u shoudl write a genric method which will generate u a sequence int number
+		List<String> roomlist = allRoomsList.stream().map(r -> r.getRoomId()).collect(Collectors.toList());
+		System.out.println("BeforeL::" + roomlist);
 		System.out.print("Enter room Id,Prefix R_ for Standard Room|S_for Suite room :");
 		Scanner scanner = new Scanner(System.in);
-		 input= scanner.next();
-		if(validate.validateRoomid(allRoomsList,input))
+		input = scanner.next();
+		if (validate.validateRoomid(allRoomsList, input))
 			room.setRoomId(input);
-		else 
+		else {
+			// throw new Room creation exception reason: Room id is not valid();
 			System.out.println("Room id is not valid");
-		System.out.print("Enter Rome Type R->Standard Room | S-> Suite room:"); 
-		input =scanner.next();
-		if(validate.validateRoomType(room.getRoomId(),input))
+			return false;
+		}
+		System.out.print("Enter Rome Type R->Standard Room | S-> Suite room:");
+		input = scanner.next();
+		if (validate.validateRoomType(room.getRoomId(), input))
 			room.setRoomType(input);
-		else 
+		else {
+			// throw new Room creation exception reason: Room type is not valid();
 			System.out.println("Room Type is not valid");
-		System.out.print("Enter Rome Type R->Standard Room | S-> Suite room:"); 
-		
-		allRoomsList.add(room);
-		/*
-		 * r1.setRoomId(val.getNext()); r1.setNoofbed(2); r1.setRoomType("Suit");
-		 */
+			return false;
+		}
+		System.out.print("Enter number of bed:");
+		input = scanner.next();
+		if (validate.validateBeds(room.getRoomType(), Integer.valueOf(input)))
+			room.setNoofbed(Integer.valueOf(input));
+		else {
+			// throw new Room creation exception reason: bed is not valid();
+			System.out.println("Number of beds for " + room.getRoomType() + " is not valid");
+			return false;
+		}
+		System.out.print("Enter Summary of the room ");
+		input = scanner.next();
+		String[] s=input.split("\\s+");
+		System.out.println(input.length());
+		if (s.length <= 20) {
+			room.setSummary(input);
+		} else {
+			System.out.println("Summary is beyond 20 letters");
+			return false;
+		}
+		room.setRoomStatus("Available");
 
-		/*
-		 * for(Room item : suitroom){ System.out.println(item.getRoomType()); }
-		 */
-		//allRooms.stream().forEach(System.out::println);
-		roomlist = allRoomsList.stream().map(r->r.getRoomId()).collect(Collectors.toList());
-		System.out.println("After "+roomlist);    
+		allRoomsList.add(room);
+
+		System.out.println("Room has be added successfully!!!!!!!!");
+
+		roomlist = allRoomsList.stream().map(r -> r.getRoomId()).collect(Collectors.toList());
+		// System.out.println("After " + roomlist);
+		return false;
 	}
 
 	@Override
