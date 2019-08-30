@@ -19,7 +19,16 @@ public class Validators {
 		} else
 			return false;
 		return false;
-
+	}
+	public boolean validateRoomType(String room_id,String input) {
+		if(input.equalsIgnoreCase("R")||input.equalsIgnoreCase("S")) {
+			if(room_id.startsWith("R_")&& input.equalsIgnoreCase("R"))
+				return true;
+			else if(room_id.startsWith("S_")&& input.equalsIgnoreCase("S"))
+				return true;
+			else return  false;
+		}
+		else return false;
 	}
 
 }

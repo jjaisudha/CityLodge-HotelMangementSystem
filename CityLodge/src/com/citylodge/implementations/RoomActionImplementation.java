@@ -27,11 +27,13 @@ public class RoomActionImplementation implements RoomActionInterface {
 			room.setRoomId(input);
 		else 
 			System.out.println("Room id is not valid");
-		/*
-		 * System.out.print("Enter Rome Type R->Standard Room | S-> Suite room:"); input
-		 * =scanner.next();
-		 */
-		
+		System.out.print("Enter Rome Type R->Standard Room | S-> Suite room:"); 
+		input =scanner.next();
+		if(validate.validateRoomType(room.getRoomId(),input))
+			room.setRoomType(input);
+		else 
+			System.out.println("Room Type is not valid");
+		System.out.print("Enter Rome Type R->Standard Room | S-> Suite room:"); 
 		
 		allRoomsList.add(room);
 		/*
