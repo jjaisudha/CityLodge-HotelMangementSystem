@@ -3,8 +3,11 @@
  */
 package com.citylodge;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
+import com.citylodge.beans.Room;
 import com.citylodge.implementations.RoomActionImplementation;
 import com.citylodge.interfaces.RoomActionInterface;
 
@@ -15,6 +18,7 @@ import com.citylodge.interfaces.RoomActionInterface;
 public class CityLodgeMain {
 
 	static RoomActionInterface roomAction;
+	static List<Room> allRoomsList = new ArrayList<Room>();
 
 	/**
 	 * @param args
@@ -36,10 +40,12 @@ public class CityLodgeMain {
 			Scanner scanner = new Scanner(System.in);
 			select = scanner.nextInt();
 			roomAction = new RoomActionImplementation();
+			
+			
 
 			switch (select) {
 			case 1:
-				roomAction.addRoom();
+				roomAction.addRoom(allRoomsList);
 				break;
 			case 7: {
 				System.out.println("You have selectedd option to exit.Do u wish to exit? Say Y/N");

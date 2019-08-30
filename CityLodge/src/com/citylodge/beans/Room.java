@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Room {
-private int roomId;
+private String roomId;
 private int noofbed;
 private String roomType;
 private String summary;
@@ -16,13 +16,13 @@ List <Hiringrecord> hrecords = new ArrayList<Hiringrecord>();
 /**
  * @return the roomId
  */
-public int getRoomId() {
+public String getRoomId() {
 	return roomId;
 }
 /**
  * @param roomId the roomId to set
  */
-public void setRoomId(int roomId) {
+public void setRoomId(String roomId) {
 	this.roomId = roomId;
 }
 /**
